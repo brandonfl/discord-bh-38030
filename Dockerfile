@@ -1,7 +1,7 @@
 FROM maven:openjdk AS build
 COPY src /src/bot/src
 COPY pom.xml /src/bot
-RUN mvn -f /usr/src/bot/pom.xml clean package
+RUN mvn -f /src/bot/pom.xml clean package
 
 FROM openjdk:11-slim
 
