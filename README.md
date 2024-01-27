@@ -13,22 +13,28 @@ Discord BH 38030 repro example
 </p>
 
 ## How to use
-#### Use with docker-compose
-1. Change <a href="#variables">variables</a> in [application.properties](https://github.com/FontanyLegall-Brandon/discord-java-docker-bot/blob/master/src/main/resources/application.properties) file
+### Use with docker-compose
 
+#### Dev 
+1. Change <a href="#variables">variables</a> in [application.properties](https://github.com/brandonfl/discord-bh-38030/blob/master/src/main/resources/application.properties) file
 2. Use command `docker-compose up`
 
-#### Use with docker run
+#### Production
+
+1. Create a docker-compose like https://github.com/brandonfl/discord-bh-38030/blob/master/misc/docker-compose-example.yml
+2. Use command `docker-compose up -d`
+
+### Use with docker run
 Command 
 `docker run IMAGE -e BOT_TOKEN=TOKEN ...` 
 
 with `-e` the <a href="#variables">variables</a>
 
-#### Use with java
+### Use with java
 1. Compile `mvn clean package`
 2. Run `java -jar target/bot.war` with <a href="#variables">variables</a>
 
-#### Use with tomcat
+### Use with tomcat
 1. Compile `mvn clean package` and get the war file in `target`folder
 2. Config the config file of your bot `CATALINA-HOME/conf/Catalina/localhost/bot.xml` with <a href="#variables">variables</a>
 3. Deploy the war `CATALINA-HOME/webapps/bot.war`
