@@ -18,7 +18,7 @@ jobs:
           tags: latest
           tag_with_ref: true
           registry: docker.pkg.github.com
-          repository: brandonfl/discord-bh-38030
+          repository: brandonfl/discord-bh-38030/discord-bh-38030
           dockerfile: Dockerfile
           username: ${{ secrets.GH_USERNAME }}
           password: ${{ secrets.GITHUB_TOKEN }}
