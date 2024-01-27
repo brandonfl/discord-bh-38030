@@ -36,6 +36,7 @@ import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.InteractionHook;
+import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -62,7 +63,7 @@ public class DiscordBot extends ListenerAdapter {
         Commands.slash("test", "test.")
             .addOptions(new OptionData(ATTACHMENT, "screenshot", "screenshot")
                 .setRequired(true))
-            .setGuildOnly(true)
+            .setGuildOnly(true).setDefaultPermissions(DefaultMemberPermissions.ENABLED)
     );
 
     commands.queue();
