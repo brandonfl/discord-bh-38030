@@ -15,6 +15,11 @@ jobs:
       - uses: actions/checkout@v2
         name: Check out code
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - uses: docker/build-push-action@v1.1.0
         name: Build & push Docker image on Github
         with:
