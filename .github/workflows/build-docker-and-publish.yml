@@ -10,9 +10,11 @@ jobs:
     permissions:
       contents: read
       packages: write
+    env:
+      VERSION_NUMBER: ${{ github.ref_name }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         name: Check out code
 
       - name: Set up QEMU
@@ -20,14 +22,19 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - uses: docker/build-push-action@v1.1.0
-        name: Build & push Docker image on Github
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
         with:
-          platforms: linux/amd64,linux/arm64
-          tags: latest
-          tag_with_ref: true
-          registry: docker.pkg.github.com
-          repository: brandonfl/discord-bh-38030/discord-bh-38030
-          dockerfile: Dockerfile
-          username: ${{ secrets.GH_USERNAME }}
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/brandonfl/discord-bh-38030:latest
+            ghcr.io/brandonfl/discord-bh-38030:$VERSION_NUMBER
