@@ -10,7 +10,7 @@ Discord BH 38030 repro example
   <a href="#how-to-use">How to use</a> •
   <a href="#variables">Variables</a> •
   <a href="#licence">Licence</a> 
-</p>Reproduction steps for the issue : Copy/Paste image into slash commands are not working.
+</p>Reproduction example for the issue : Copy/Paste image into slash commands are not working.
 
 ## How to use
 ### Use with docker-compose
