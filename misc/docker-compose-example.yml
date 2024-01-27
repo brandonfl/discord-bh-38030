@@ -1,0 +1,8 @@
+version: "3.5"
+services:
+  bot-bh-38030:
+    container_name: "bot-bh-38030"
+    image: ghcr.io/brandonfl/discord-bh-38030:latest
+    restart: unless-stopped
+    environment:
+      - BOT_TOKEN=<token>
