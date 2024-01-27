@@ -17,6 +17,16 @@ jobs:
       - uses: actions/checkout@v4
         name: Check out code
 
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            ghcr.io/brandonfl/discord-bh-38030
+          tags: |
+            type=semver,pattern={{version}}
+            type=raw,value=latest,enable=true
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -35,6 +45,5 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: |
-            ghcr.io/brandonfl/discord-bh-38030:latest
-            ghcr.io/brandonfl/discord-bh-38030:$VERSION_NUMBER
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
