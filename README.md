@@ -1,5 +1,6 @@
 
 <h1 align="center">
+  <img src="https://github.com/brandonfl/discord-bh-38030/blob/master/misc/bot-test-command.png" width="250"/>
   <br>
 Discord BH 38030 repro example
   <br>
