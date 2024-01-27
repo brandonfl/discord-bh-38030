@@ -1,0 +1,24 @@
+name: build-docker-and-publish
+
+on:
+  release:
+    types: [ released ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Check out code
+
+      - uses: docker/build-push-action@v1.1.0
+        name: Build & push Docker image on Github
+        with:
+          tags: latest
+          tag_with_ref: true
+          registry: docker.pkg.github.com
+          repository: brandonfl/discord-bh-38030
+          dockerfile: Dockerfile
+          username: ${{ secrets.GH_USERNAME }}
+          password: ${{ secrets.GITHUB_TOKEN }}
