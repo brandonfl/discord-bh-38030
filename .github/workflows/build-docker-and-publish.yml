@@ -18,6 +18,7 @@ jobs:
       - uses: docker/build-push-action@v1.1.0
         name: Build & push Docker image on Github
         with:
+          platforms: linux/amd64,linux/arm64
           tags: latest
           tag_with_ref: true
           registry: docker.pkg.github.com
